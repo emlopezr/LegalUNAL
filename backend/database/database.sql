@@ -9,33 +9,41 @@ DROP TABLE IF EXISTS referencia;
 
 CREATE TABLE cuerpo_colegiado (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL
+    nombre VARCHAR(100) NOT NULL UNIQUE
 );
+
+INSERT INTO cuerpo_colegiado VALUES
+    (1, "Consejo Superior Universitario"),
+    (2, "Rectoría"),
+    (3, "Vicerrectoría Sede Medellín"),
+    (4, "Decanatura Facultad de Minas Medellín");
 
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nombres VARCHAR(50) NOT NULL,
-    apellidos VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    rol VARCHAR(15) NOT NULL
+    nombres VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    rol VARCHAR(20) NOT NULL,
+    UNIQUE (nombres, apellidos)
 );
 
 CREATE TABLE documento (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_cuerpo_colegiado INT NOT NULL,
     id_usuario INT NOT NULL,
-    tipo VARCHAR(50) NOT NULL,
+    tipo VARCHAR(100) NOT NULL,
     numero INT NOT NULL,
     anio INT NOT NULL,
     informacion TEXT NOT NULL,
     FOREIGN KEY (id_cuerpo_colegiado) REFERENCES cuerpo_colegiado(id),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    UNIQUE (tipo, numero, anio)
 );
 
 CREATE TABLE miembro_cuerpo_colegiado (
     id_cuerpo_colegiado INT NOT NULL,
     id_usuario INT NOT NULL,
-    rol VARCHAR(50) NOT NULL,
+    rol VARCHAR(100) NOT NULL,
     FOREIGN KEY (id_cuerpo_colegiado) REFERENCES cuerpo_colegiado(id),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
     PRIMARY KEY (id_cuerpo_colegiado, id_usuario)

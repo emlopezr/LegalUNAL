@@ -2,10 +2,9 @@
 // TODO: Maybe implementar una BD en MySQL
 
 import express, { request } from "express";
-import mysql from "./database.js";
-// import routesCuerposColegiados from './routes/cuerpos_colegiados.js'
-// import routesUsuarios from './routes/usuarios.js'
-// import routesDocumentos from './routes/documentos.js'
+import routesCuerposColegiados from './routes/cuerpos_colegiados.routes.js'
+// import routesUsuarios from './routes/usuarios.routes.js'
+// import routesDocumentos from './routes/documentos.routes.js'
 
 const app = express();
 
@@ -18,11 +17,7 @@ app.use(express.urlencoded({ extended: false })); // Solo usar datos sencillos d
 app.use(express.json()); // Usar datos en formato JSON
 
 // Routes -> Cada uno de los grupos de rutas en un archivo independiente
-app.get("/ping", async (req, res) => {
-    const [result] = await mysql.query("SELECT 1+1 AS result");
-    res.json(result);
-});
-// app.use("/api/cuerpos_colegiados", routesCuerposColegiados);
+app.use("/api/cuerpos_colegiados", routesCuerposColegiados);
 // app.use("/api/usuarios", routesUsuarios);
 // app.use("/api/documentos", routesDocumentos);
 
