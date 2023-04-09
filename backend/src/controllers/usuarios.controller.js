@@ -1,4 +1,4 @@
-import mysql from "../database.js";
+import mysql from "../config/database.js";
 
 export const getUsuarios = async (req, res) => {
     try {

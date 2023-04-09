@@ -1,4 +1,4 @@
-import mysql from "../database.js";
+import mysql from "../config/database.js";
 
 export const getDocumentos = async (req, res) => {
     try {

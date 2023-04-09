@@ -1,4 +1,4 @@
-import mysql from "../database.js";
+import mysql from "../config/database.js";
 
 export const getReferencias = async (req, res) => {
     // Conseguir las referencias de un documento a partir de su ID

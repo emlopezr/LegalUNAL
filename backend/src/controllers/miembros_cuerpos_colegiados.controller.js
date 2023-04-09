@@ -1,4 +1,4 @@
-import mysql from "../database.js";
+import mysql from "../config/database.js";
 
 export const getMiembrosCuerpoColegiado = async (req, res) => {
     // Conseguir los miembros de un cuerpo colegiado a partir de su ID

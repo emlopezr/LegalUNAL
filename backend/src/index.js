@@ -1,4 +1,4 @@
-import { PORT } from "./config.js";
+import { PORT } from "./config/config.js";
 import app from "./app.js";
 
 // Inicializar el servidor
