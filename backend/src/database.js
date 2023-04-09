@@ -1,10 +1,11 @@
-import { createPool } from 'mysql2/promise'
+import { createPool } from "mysql2/promise";
+import { DB_HOST, DB_USER, DB_PASS, DB_PORT, DB_NAME } from "./config.js";
 
 // Configuración de la BD
 export default createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'admin',
-    port: 3306,
-    database: 'legal_unal'
-})
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASS,
+    port: DB_PORT,
+    database: DB_NAME,
+});
