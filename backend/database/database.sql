@@ -33,7 +33,7 @@ INSERT INTO usuario(nombres, apellidos, email, rol) VALUES
     ("Johan", "Madronero Cuervo", "jmadronero@unal.edu.co", "miembro"),
     ("Emmanuel", "Lopez Rodriguez", "emlopezr@unal.edu.co", "miembro"),
     ("Cristian", "Giraldo Villegas", "cgiraldo@unal.edu.co", "miembro"),
-    ("Marlon Santiago", "Nivia Devia", "pperez@unal.edu.co", "miembro"),
+    ("Marlon Santiago", "Nivia Devia", "mnivia@unal.edu.co", "miembro"),
     ("Melina", "Munoz Gallego", "memunozga@unal.edu.co", "miembro"),
     ("Sebastian", "Rendon Arteaga", "serendona@unal.edu.co", "miembro");
 
