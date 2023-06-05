@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import routesCuerposColegiados from "./routes/cuerpos_colegiados.routes.js";
 import routesUsuarios from "./routes/usuarios.routes.js";
 import routesDocumentos from "./routes/documentos.routes.js";
@@ -9,6 +10,9 @@ app.set("json spaces", 4); // Espacios de indentación que tendrán los JSON
 
 // Middlewares
 app.use(express.json()); // Usar datos en formato JSON
+
+// Configuración de CORS
+app.use(cors());
 
 // Routes -> Cada uno de los grupos de rutas en un archivo independiente
 app.use("/api/cuerpos_colegiados", routesCuerposColegiados);
