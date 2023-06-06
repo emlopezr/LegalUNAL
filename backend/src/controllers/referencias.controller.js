@@ -26,6 +26,7 @@ export const getReferencias = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -56,6 +57,7 @@ export const getReferidos = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -86,6 +88,7 @@ export const createReferencia = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -113,6 +116,7 @@ export const deleteReferencia = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -149,6 +153,7 @@ export const updateReferencia = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };

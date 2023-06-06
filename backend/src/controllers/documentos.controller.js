@@ -7,6 +7,7 @@ export const getDocumentos = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -31,6 +32,7 @@ export const getDocumento = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -74,6 +76,7 @@ export const createDocumento = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -101,6 +104,7 @@ export const deleteDocumento = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -150,6 +154,7 @@ export const updateDocumento = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };

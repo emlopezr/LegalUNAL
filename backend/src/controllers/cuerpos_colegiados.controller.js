@@ -7,6 +7,7 @@ export const getCuerposColegiados = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -31,6 +32,7 @@ export const getCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -61,6 +63,7 @@ export const createCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -88,6 +91,7 @@ export const deleteCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -121,6 +125,7 @@ export const updateCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };

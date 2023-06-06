@@ -26,6 +26,7 @@ export const getMiembrosCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -56,6 +57,7 @@ export const getCuerposColegiadosUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -87,6 +89,7 @@ export const createMiembroCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -114,6 +117,7 @@ export const deleteMiembroCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -150,6 +154,7 @@ export const updateMiembroCuerpoColegiado = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };

@@ -7,6 +7,7 @@ export const getUsuarios = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -30,6 +31,7 @@ export const getUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -63,6 +65,7 @@ export const createUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -89,6 +92,7 @@ export const deleteUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
@@ -127,6 +131,7 @@ export const updateUsuario = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
+            message: error
         });
     }
 };
