@@ -8,11 +8,11 @@ export default class Client {
   }
 
   getDocuments(page) {
-    return this.httpClient.get(`api/documentos/pagina/${page}`).json();
+    return this.httpClient.get(`api/documentos/${page}`).json();
   }
 
-  getTotalPages() {
-    return this.httpClient.get('api/documentos/totalDocumentos/').json();
+  getTotalDocuments() {
+    return this.httpClient.get('api/documentos/totalDocumentos').json();
   }
 
   getDocumentById(id) {

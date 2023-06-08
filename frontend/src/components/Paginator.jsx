@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Paginator = ({ totalPages, currentPage, setCurrentPage }) => {
+const Paginator = ({ totalDocuments, currentPage, setCurrentPage, setLoading }) => {
+    const totalPages = Math.ceil(totalDocuments/5);
 
     const pagesButtons = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -8,7 +9,10 @@ const Paginator = ({ totalPages, currentPage, setCurrentPage }) => {
             <button
                 className={i == currentPage ? 'paginatorButton selected' : 'paginatorButton'}
                 key={i}
-                onClick={() => setCurrentPage(i)}
+                onClick={() => {
+                    setLoading(true)
+                    setCurrentPage(i)
+                }}
             >
                 {String(i).padStart(2, "0")}
             </button>

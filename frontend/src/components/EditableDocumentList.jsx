@@ -1,7 +1,7 @@
 import EditableDocument from './EditableDocument';
 
 /* eslint-disable react/prop-types */
-const EditableDocumentList = ({ documents, onFormSubmit, onTrashClick, handleOpenModal }) => {
+const EditableDocumentList = ({ documents, onFormSubmit, onTrashClick, handleOpenModal, loading }) => {
   const docs = documents.map((document) => (
     <EditableDocument
       key={document.id}
@@ -11,6 +11,16 @@ const EditableDocumentList = ({ documents, onFormSubmit, onTrashClick, handleOpe
       handleOpenModal={handleOpenModal}
     />
   ));
+
+  if (loading) {
+    return (
+      <div className="ui basic segment">
+        <div className="ui header">
+          <h3>Cargando...</h3>
+        </div>
+      </div>
+    );
+  }
 
   if (docs.length === 0) {
     return (

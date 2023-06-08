@@ -12,13 +12,15 @@ const DocumentsDashboard = () => {
   const [documents, setDocuments] = useState([]);
   const [showModal, setShowModal] = useState(false)
   const [modalContent, setModalContent] = useState([])
-  const [totalPages, setTotalPages] = useState(0)
+  const [totalDocuments, setTotalDocuments] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
+  const [loading, setLoading] = useState(true)
 
   const loadDocumentsFromServer = (page) => {
     client
       .getDocuments(page)
-      .then((serverDocuments) => setDocuments(serverDocuments));
+      .then((serverDocuments) => setDocuments(serverDocuments))
+      .then(() => setLoading(false));
   };
 
   const handleCreateFormSubmit = (document) => {
@@ -65,12 +67,14 @@ const DocumentsDashboard = () => {
   };
 
   const deleteDocument = (documentId) => {
-    const newDocuments = documents.filter((t) => t.id !== documentId);
-
-    setDocuments(newDocuments);
-
+    setCurrentPage(1);
+    loadPagesFromServer();
+    loadDocumentsFromServer(currentPage);
+    
     client.deleteDocumentById(documentId).catch(() => {
-      setDocuments(documents);
+      setCurrentPage(1);
+      loadPagesFromServer();
+      loadDocumentsFromServer(currentPage);
     });
   };
 
@@ -86,15 +90,15 @@ const DocumentsDashboard = () => {
 
   const loadPagesFromServer = () => {
     client
-    .getTotalPages()
-    .then((serverPages) => setTotalPages(serverPages));
+    .getTotalDocuments()
+    .then((serverPages) => setTotalDocuments(serverPages["COUNT(*)"]));
   }
 
   useEffect(() => {
     loadPagesFromServer();
     loadDocumentsFromServer(currentPage);
     // setInterval(loadDocumentsFromServer, 5000);
-  }, []);
+  }, [documents, currentPage]);
 
   return (
     <div className="ui padded grid">
@@ -106,12 +110,15 @@ const DocumentsDashboard = () => {
           onFormSubmit={handleEditFormSubmit}
           onTrashClick={handleTrashClick}
           handleOpenModal={handleOpenModal}
+          loading={loading}
         />
 
         <Paginator
-          totalPages={25}
+          totalDocuments={totalDocuments}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          setLoading={setLoading}
+          setDocuments={setDocuments}
         />
 
       </div>
