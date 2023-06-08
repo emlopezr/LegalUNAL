@@ -5,8 +5,6 @@ import {
     createDocumento,
     updateDocumento,
     deleteDocumento,
-    getTotalDocumentos,
-    getDocumentosPagina
 } from "../controllers/documentos.controller.js";
 import {
     getReferencias,
@@ -23,9 +21,6 @@ router.get("/:id", getDocumento);
 router.post("/", createDocumento);
 router.delete("/:id", deleteDocumento);
 router.patch("/:id", updateDocumento);
-
-router.get("/totalDocumentos", getTotalDocumentos);
-router.get("/pagina/:pagina", getDocumentosPagina);
 
 router.get("/:id/referencias", getReferencias);
 router.get("/:id/referidos", getReferidos);

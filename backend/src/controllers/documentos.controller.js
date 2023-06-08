@@ -13,9 +13,42 @@ export const getDocumentos = async (req, res) => {
 };
 
 export const getDocumento = async (req, res) => {
-    // Conseguir un documento a partir de su ID
     const { id } = req.params;
+    
+    // Conseguir el total de documentos
+    if (id === 'totalDocumentos') {
+        try {
+            const [rows] = await mysql.query("SELECT COUNT(*) FROM documento");
+            return res.json(rows[0]);
+        } catch (error) {
+            return res.status(500).json({
+                error: "Ocurrió un error en el servidor",
+                message: error
+            });
+        }
+    }
 
+    // Conseguir una página de documentos
+    if (parseInt(id) < 50) {
+        try {
+            const [rows] = await mysql.query(
+                `SELECT * FROM documento
+                ORDER BY id
+                LIMIT 5
+                OFFSET ?
+                `
+            , [(id - 1) * 5]
+            );
+            return res.json(rows);
+        } catch (error) {
+            return res.status(500).json({
+                error: "Ocurrió un error en el servidor",
+                message: error
+            });
+        }
+    }
+    
+    // Conseguir un documento único a partir de su ID
     try {
         const [rows] = await mysql.query(
             "SELECT * FROM documento WHERE id = ?",
@@ -151,40 +184,6 @@ export const updateDocumento = async (req, res) => {
                 error: "No se ha encontrado un documento con este ID",
             });
         }
-    } catch (error) {
-        return res.status(500).json({
-            error: "Ocurrió un error en el servidor",
-            message: error
-        });
-    }
-};
-
-export const getTotalDocumentos = async (req, res) => {
-    try {
-        const [rows] = await mysql.query("SELECT COUNT(*) FROM documento");
-        res.json(rows[0]);
-    } catch (error) {
-        return res.status(500).json({
-            error: "Ocurrió un error en el servidor",
-            message: error
-        });
-    }
-};
-
-export const getDocumentosPagina = async (req, res) => {
-    const { pagina } = req.params;
-
-    try {
-        const [rows] = await mysql.query(
-            `SELECT * FROM documento
-            ORDER BY id
-            LIMIT 5
-            OFFSET ?
-            `
-        , [(pagina - 1) * 5]
-        );
-        
-        res.json(rows);
     } catch (error) {
         return res.status(500).json({
             error: "Ocurrió un error en el servidor",
