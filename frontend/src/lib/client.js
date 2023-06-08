@@ -12,7 +12,7 @@ export default class Client {
   }
 
   getTotalPages() {
-    return this.httpClient.get('api/documentos/pagina').json();
+    return this.httpClient.get('api/documentos/totalDocumentos/').json();
   }
 
   getDocumentById(id) {
