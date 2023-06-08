@@ -42,6 +42,10 @@
   color: white;
 }
 
+#button:hover {
+  background-color: #7B9D31;
+}
+
 html,
 body {
   margin: 0;

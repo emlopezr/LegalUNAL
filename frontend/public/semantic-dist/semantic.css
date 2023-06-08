@@ -38821,3 +38821,32 @@ body.pushable > .pusher {
   display: flex;
   justify-content: center;
 }
+
+.paginator {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.paginator > .paginatorButton {
+  background-color: #94B43B;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.paginator > .paginatorButton:hover {
+  background-color: #7B9D31;
+}
+
+.paginator > .paginatorButton.selected {
+  background-color: #506620;
+}

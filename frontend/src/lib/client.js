@@ -7,8 +7,12 @@ export default class Client {
     this.httpClient = ky.extend({ prefixUrl });
   }
 
-  getDocuments() {
-    return this.httpClient.get('api/documentos').json();
+  getDocuments(page) {
+    return this.httpClient.get(`api/documentos/pagina/${page}`).json();
+  }
+
+  getTotalPages() {
+    return this.httpClient.get('api/documentos/pagina').json();
   }
 
   getDocumentById(id) {

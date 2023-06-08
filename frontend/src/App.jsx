@@ -4,6 +4,7 @@ import { newDocument } from './lib/helpers';
 import EditableDocumentList from './components/EditableDocumentList';
 import ToggleableDocumentForm from './components/ToggleableDocumentForm';
 import Modal from 'react-modal';
+import Paginator from './components/Paginator';
 
 const client = new Client();
 
@@ -11,10 +12,12 @@ const DocumentsDashboard = () => {
   const [documents, setDocuments] = useState([]);
   const [showModal, setShowModal] = useState(false)
   const [modalContent, setModalContent] = useState([])
+  const [totalPages, setTotalPages] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
 
-  const loadDocumentsFromServer = () => {
+  const loadDocumentsFromServer = (page) => {
     client
-      .getDocuments()
+      .getDocuments(page)
       .then((serverDocuments) => setDocuments(serverDocuments));
   };
 
@@ -81,26 +84,43 @@ const DocumentsDashboard = () => {
     setModalContent([])
   }
 
+  const loadPagesFromServer = () => {
+    client
+    .getTotalPages()
+    .then((serverPages) => setTotalPages(serverPages));
+  }
+
   useEffect(() => {
-    loadDocumentsFromServer();
+    loadPagesFromServer();
+    loadDocumentsFromServer(currentPage);
     // setInterval(loadDocumentsFromServer, 5000);
   }, []);
 
   return (
     <div className="ui padded grid">
-      <div className="two wide column"></div>
-      <div className="eight wide column">
+      <div className="one wide column"></div>
+
+      <div className="ten wide column">
         <EditableDocumentList
           documents={documents}
           onFormSubmit={handleEditFormSubmit}
           onTrashClick={handleTrashClick}
           handleOpenModal={handleOpenModal}
         />
+
+        <Paginator
+          totalPages={25}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+
       </div>
+
       <div className="four wide column">
         <ToggleableDocumentForm onFormSubmit={handleCreateFormSubmit} />
       </div>
-      <div className="two wide column"></div>
+
+      <div className="one wide column"></div>
 
       <Modal
         isOpen={showModal}
