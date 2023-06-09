@@ -11,7 +11,7 @@ Desarrollo Web. Desarrollo del Sistema de Información Normativa, Jurisprudencia
 - Emmanuel Lopez Rodriguez - [emlopezr@unal.edu.co](mailto:emlopezr@unal.edu.co)
 - Johan Madronero Cuervo - [jmadronero@unal.edu.co](mailto:jmadronero@unal.edu.co)
 - Marlon Santiago Nivia Devia - [mnivia@unal.edu.co](mailto:mnivia@unal.edu.co)
-- Melina Munoz Gallego - [memunozga@unal.edu.co](mailto:memunozga@unal.edu.co)
+- Melina Raigosa Gallego - [memunozga@unal.edu.co](mailto:memunozga@unal.edu.co)
 - Sebastian Rendon Arteaga - [serendona@unal.edu.co](mailto:serendona@unal.edu.co)
 
 ## Licencia
